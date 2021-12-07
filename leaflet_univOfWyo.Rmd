@@ -1,0 +1,40 @@
+---
+title: "Univ of Wyoming - Laramie"
+author: "Jay Yanamandala"
+date: November 02, 2021
+output:
+  html_document
+---
+
+<style>
+.leaflet {
+    margin: auto;
+}
+</style>
+
+
+```{r libraries, message=FALSE, warning=FALSE, echo=FALSE}
+## load libraries
+library(leaflet)
+library(dplyr)
+```
+
+  
+```{r echo=FALSE}
+## setup data
+univOfWyoming <- data.frame(
+	lat = c( 41.32045, 41.31236, 41.31297, 41.31603, 41.31626, 41.31817, 41.31877, 41.31300, 41.31292, 41.31374),
+	lng = c(-105.56543, -105.56843, -105.55586, -105.55985, -105.56219, -105.56337, -105.56270, -105.56120, -105.57099, -105.56866)
+)
+
+univSites <- c("Univ of Wyoming", "War Memorial Stadium", "Ivinson Memorial Hospital", 
+	"Multipurpose Fields", "Indoor Tennis Complex", "Laramie, Soccer Fields", "Laramie Park", 
+	"Univ of Wyoming Apartments", "College of Law", "Arena Auditorium")
+```
+
+```{r echo=FALSE}
+univOfWyoming %>% leaflet() %>% addTiles() %>% addMarkers(popup = univSites)
+```
+  
+Map of Univ of Wyoming, were I graduated from
+
